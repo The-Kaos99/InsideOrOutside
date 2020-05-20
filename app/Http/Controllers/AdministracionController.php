@@ -14,7 +14,6 @@ class AdministracionController extends Controller
 {
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles('admin');
         return view("administracion.index");
     }
    

@@ -17,7 +17,7 @@ class PadresController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles('admin');
+        
         $padres=Padre::all();
         return view('administracion.padres.index',compact('padres'));
     }
@@ -60,12 +60,7 @@ class PadresController extends Controller
         
         $padre->pass=bcrypt($password);
         $padre->save();
-        $user = new User();
-        $user->name=$user->name=$padre->nombre.' '.$padre->apellidos;;
-        $user->email=$padre->email;
-        $user->password=$padre->pass;
-        $user->save();
-        $user->roles()->attach($role_padre);
+        
         Mail::to($padre->email)->send(new PassPadres($password , $padre));
         return redirect()->action('PadresController@index')->with('status','Tutor Creado Correctamente');
     }
