@@ -25,8 +25,11 @@
                             <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center border border-primary" href="{{asset("admin/padres")}}">Tutores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bg-danger m-2 opacidad-0 text-light text-center border border-primary" href="{{asset("/")}}"
-                                 ">Salir</a>
+                        
+                            {!! Form::open(['route'=>'logout' , 'method'=>'post']) !!}
+                               {!! Form::submit('Salir', ['class'=>"btn btn-danger m-2"]) !!}
+                            {!! Form::close() !!}
+                                                       
                         </li>
                     </ul>
                 </div>

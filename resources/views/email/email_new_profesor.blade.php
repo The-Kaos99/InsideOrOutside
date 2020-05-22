@@ -352,7 +352,15 @@
                       <h4>Le damos la bienvenida nuestra plataforma {{ $profesor->nombre}} {{ $profesor->apellidos}} a continacion tendra sus datos de acceso: </h4>
                       <ul>
                           <li>Email : {{ $profesor->email}}</li>
-                          <li>Contraseña : {{ $password}}</li>
+                          <li>Para generar su contraseña debe debe seguir estos sencillos pasos: 
+                            <ol>
+                              <li>Pulse el boton</li>
+                              <li>Introduzca su correo electronico</li>
+                              <li>Pulse :
+                                Send Password Reset Link</li>
+                              <li>Recibira un correo para generare la nueva clave </li>
+                            </ol>
+                          </li>
                       </ul>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                           <tbody>
@@ -361,7 +369,7 @@
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                   <tbody>
                                     <tr>
-                                      <td> <a href="{{asset("/")}}" target="_blank">Pagina Principal</a> </td>
+                                      <td> <a href="{{asset("/password/reset")}}" target="_blank">Generar Contraseña</a> </td>
                                     </tr>
                                   </tbody>
                                 </table>

@@ -6,6 +6,7 @@
 @endsection
 @section('contenido')
 @include('common.succes')
+@include('common.errors')
 @include("administracion.profesores.create_profe")
 @include("administracion.profesores.list_profe")
 @endsection

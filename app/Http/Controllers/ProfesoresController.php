@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Profesor;
 use App\Alumno;
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 use Mail; //Importante incluir la clase Mail, que será la encargada del envío
 use App\Mail\PassProfesores;
@@ -60,8 +61,14 @@ class ProfesoresController extends Controller
         }
         $profesor->pass = bcrypt($password);
         $profesor->save();
+        $user = new User();
+        $user->name= $profesor->nombre.' '.$profesor->apellidos;
+        $user->email= $profesor->email;
+        $user->password= bcrypt($password);
+        $user->save();
+        $user->roles()->sync([ Role::where('slug','profe')->first()->id]);
         Mail::to($profesor->email)->send(new PassProfesores($password , $profesor));
-        return redirect()->action('ProfesoresController@index');
+        return redirect()->action('ProfesoresController@index')->with(['status','Profesor Creado'],[]);
     }
 
     /**
@@ -97,13 +104,22 @@ class ProfesoresController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'nombre'=>'required|max:35',
+            'apellidos'=>'required',
+            'pass'=>'min:8',
+        ]);
         $profesor=Profesor::find($id);
-        $profesor->fill($request->except('pass'));
+        $user=User::where('email',$profesor->email)->first();
+        $profesor->fill($request->except('pass','email'));
 
         $pass=bcrypt($request->input('pass'));
         if($profesor->pass!=$pass){
-            $profesor->pass=$pass;
+            $profesor->pass=bcrypt($pass);
         }
+        $user->name=$profesor->nombre.' '.$profesor->apellidos;
+        $user->password= $profesor->pass;
+        $user->save();
         $profesor->save();
         
         return redirect()->action('ProfesoresController@index')->with('status','Datos Modificados');
@@ -119,17 +135,14 @@ class ProfesoresController extends Controller
     {
         if ($id=='allDelete') {
             Profesor::truncate();
-            $profesors=Profesor::all();
-            return view('administracion.profesores.index',compact('profesors'));
+            return redirect()->action('ProfesoresController@index')->with('status','Todos los Profesores Eliminados Correctamente');
         }
         $profesor=Profesor::find($id);
+        $user=User::where('email',$profesor->email)->first();
+        $user->delete();
         $profesor->delete();
-        return redirect()->action('ProfesoresController@index')->with('status','Todos los Profesores Eliminados Correctamente');
-    }
-
-    public function deleteAllProfesor()
-    {
-        Profesor::truncate(); 
+       
         return redirect()->action('ProfesoresController@index')->with('status','Profesor Eliminado Correctamente');
     }
+
 }

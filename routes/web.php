@@ -43,13 +43,21 @@ Route::get('/test', function () {
         'description'=>'administrador',
     ]);*/
     /**/
-    $user=User::where('email','mariansomesa@gmail.com')->first();
+    $user=User::where('email','somesan1955599@gmail.com')->first();
     $role_admin= Role::where('name','admin')->first();
+    $user_all= User::All();
+    $email;
    // $user->roles()->attach([$role_admin->id]);
     //$user->roles()->detach([$role_admin->id]);
     //$user->roles()->attach([ Role::where('name','admin')->first()->id]);
-    $user->roles()->sync([ Role::where('name','admin')->first()->id]);
-    return $user->roles;
+    //$user->roles()->sync([ Role::where('name','admin')->first()->id]);
+   /* if ($user=='') {
+        foreach ($user_all as $prueba) {
+            return $prueba->email;
+        }
+       return $user_all;
+    }*/
+    return auth()->user()->roles();
     
 
 });

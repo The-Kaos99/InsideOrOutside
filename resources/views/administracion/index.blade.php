@@ -41,10 +41,13 @@
         <div class="row">
             <div class="col-6 mt-3" ><h4>Eliminacion de todos los Datos</h4></div>
             <div class="col-6">
+                {!! Form::open(['action'=>['AdministracionController@deleteAll', $slug='allDelete',] , 'method'=>'DELETE']) !!}
+                    {!! Form::submit('Eliminar', ['class'=>"btn btn-danger mb-3"]) !!}
+                {!! Form::close() !!}
             </div>
         </div>
         <hr>
-        
+        @include("administracion.create_admin")
 @endsection
 @section('footer')
 

@@ -60,7 +60,12 @@ class PadresController extends Controller
         
         $padre->pass=bcrypt($password);
         $padre->save();
-        
+        $user = new User();
+        $user->name= $padre->nombre.' '.$padre->apellidos;
+        $user->email= $padre->email;
+        $user->password= bcrypt($password);
+        $user->save();
+        $user->roles()->sync([ Role::where('slug','padre')->first()->id]);
         Mail::to($padre->email)->send(new PassPadres($password , $padre));
         return redirect()->action('PadresController@index')->with('status','Tutor Creado Correctamente');
     }
@@ -100,9 +105,14 @@ class PadresController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'nombre'=>'required|max:35',
+            'apellidos'=>'required',
+            'pass'=>'required|min:8',
+        ]);
         $padre=Padre::find($id);
         $user=User::find($padre->email);
-        $padre->fill($request->except('pass'));
+        $padre->fill($request->except('pass','email'));
         $pass= bcrypt($request->input('contra'));
        
         if($padre->pass!=$pass){
@@ -131,6 +141,8 @@ class PadresController extends Controller
            return redirect()->action('PadresController@index')->with('status','Todos los Tutores Eliminados');
         }
         $padre=Padre::find($id);
+        $user=User::where('email',$padre->email)->first();
+        $user->delete();
         $padre->delete();
         return redirect()->action('PadresController@index')->with('status','Tutor Eliminado Correctamente');
     }

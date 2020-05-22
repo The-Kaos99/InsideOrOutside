@@ -5,11 +5,8 @@
 ?>
 @endsection
 @section('contenido')
-@if (session('status'))
-    <div class="alert alert-success">
-        {{session('status')}}
-    </div>
-@endif
+@include('common.succes')
+@include('common.errors')
 @include("administracion.alumnos.create_alumno")
 @include("administracion.alumnos.list_alumno")
 @endsection

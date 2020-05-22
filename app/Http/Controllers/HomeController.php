@@ -36,11 +36,16 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $prueba=$request->user()->roles;
-        $prueba2=auth()->user()->roles;
-        $prueba3= Role::where('slug','admin')->first();
         
-        return $prueba2;
+        $user_role_slug=auth()->user()->roles()->first()->slug;
+        if ($user_role_slug=='admin') {
+            return redirect('/admin') ;
+        }elseif ($user_role_slug=='padre') {
+           return 'familiares';
+        }elseif ($user_role_slug=='profe') {
+           return 'profesorado';
+        }
+        return $user->roles()->first()->slug;
         
     }
 }

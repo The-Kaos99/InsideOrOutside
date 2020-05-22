@@ -16,10 +16,6 @@
                 {!! Form::text('apellidos', $padre->apellidos , ['class'=>'form-control' , 'placeholder'=>"Apellidos" , 'required']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('email','Correo Electronico')!!}
-                {!! Form::email('email', $padre->email , ['class'=>'form-control' , 'placeholder'=>"email" , 'required']) !!}
-            </div>
-            <div class="form-group">
                 {!! Form::label('telefono', 'Telefono :') !!}
                 {!! Form::text('telefono', $padre->telefono , ['class'=>'form-control' , 'placeholder'=>"Numero de telefono"  ]) !!}
             </div>
@@ -36,6 +32,16 @@
         {!! Form::close() !!}
         
     </div>
+</div>
+<div class="row pb-5">
+    <div class="col-12 text-center">
+        {!! Form::open(['action'=>['ProfesoresController@destroy', $id=$padre->id,] , 'method'=>'DELETE']) !!}
+            {!! Form::submit('Eliminar', ['class'=>"btn btn-danger mb-3"]) !!}
+          {!! Form::close() !!}
+          <p class="mt-5  border border-warning alert-warning">*En caso de querer cambiar el correo electronico se tendra que borrar el usuario y crearlo de nuevo por seguridad</p>
+    </div>
+</div>
+<div class="row mt-5 pb-5 text-center">
 </div>
 @endsection
 @section('footer')
