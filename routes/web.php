@@ -61,3 +61,7 @@ Route::get('/test', function () {
     
 
 });
+Route::get('entradas', 'SalidasController@index')->name('entrada');
+/*Route::get('/entradas', function (){
+    return view('entrada');
+})->name('entrada');*/

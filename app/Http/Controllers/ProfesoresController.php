@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Mail; //Importante incluir la clase Mail, que será la encargada del envío
 use App\Mail\PassProfesores;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class ProfesoresController extends Controller
 {
@@ -115,7 +116,8 @@ class ProfesoresController extends Controller
 
         $pass=bcrypt($request->input('pass'));
         if($profesor->pass!=$pass){
-            $profesor->pass=bcrypt($pass);
+            $profesor->pass=$pass;
+            $user->password= $pass;
         }
         $user->name=$profesor->nombre.' '.$profesor->apellidos;
         $user->password= $profesor->pass;

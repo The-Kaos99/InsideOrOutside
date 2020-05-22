@@ -18,11 +18,6 @@
             <div class="form-group">
                 {!! Form::label('telefono', 'Telefono :') !!}
                 {!! Form::text('telefono', $padre->telefono , ['class'=>'form-control' , 'placeholder'=>"Numero de telefono"  ]) !!}
-            </div>
-            <div class="form-group">
-                {!! Form::label('contra', 'Contraseña : ') !!}
-                <input type="password" class="form-control" id="contra" placeholder="Indroduzca clave">
-                
             </div>            
             <div class="form-group">
                 {!! Form::submit('Guardar', ['class'=>'btn btn-success border border-dark']) !!}

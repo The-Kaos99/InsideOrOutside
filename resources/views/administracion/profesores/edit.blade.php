@@ -15,11 +15,6 @@
             <div class="form-group">
                 {!! Form::label('apellidos', 'Apellidos ') !!}
                 {!! Form::text('apellidos', $profesor->apellidos , ['class'=>'form-control' , 'placeholder'=>"Apellidos" , 'required']) !!}
-            </div>
-            <div class="form-group">
-                {!! Form::label('contra', 'Contraseña : ') !!}
-                <input type="password" class="form-control" id="contra" placeholder="Indroduzca clave">
-                
             </div>            
             <div class="form-group">
                 {!! Form::submit('Guardar', ['class'=>'btn btn-success border border-dark']) !!}                

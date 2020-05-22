@@ -7,6 +7,7 @@ use Mail; //Importante incluir la clase Mail, que será la encargada del envío
 use App\Mail\PassPadres;
 use App\Role;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class PadresController extends Controller
 {
@@ -17,7 +18,7 @@ class PadresController extends Controller
      */
     public function index(Request $request)
     {
-        
+        abort_if( Auth::user()->roles()->first()->slug!='admin', 403);
         $padres=Padre::all();
         return view('administracion.padres.index',compact('padres'));
     }
@@ -40,6 +41,7 @@ class PadresController extends Controller
      */
     public function store(Request $request)
     {
+        abort_if( Auth::user()->roles()->first()->slug!='admin', 403);
         $validatedData = $request->validate([
             'nombre'=>'required|max:35',
             'apellidos'=>'required',
@@ -56,14 +58,12 @@ class PadresController extends Controller
             //obtenemos un caracter aleatorio escogido de la cadena de caracteres
             $password .= substr($str, rand(0, 62), 1);
         }
-        //$padre->pass=md5($password);
-        
         $padre->pass=bcrypt($password);
         $padre->save();
         $user = new User();
         $user->name= $padre->nombre.' '.$padre->apellidos;
         $user->email= $padre->email;
-        $user->password= bcrypt($password);
+        $user->password=bcrypt($password);
         $user->save();
         $user->roles()->sync([ Role::where('slug','padre')->first()->id]);
         Mail::to($padre->email)->send(new PassPadres($password , $padre));
@@ -118,12 +118,13 @@ class PadresController extends Controller
         if($padre->pass!=$pass){
             $padre->pass=$pass;
         }
-        $padre->save();
+        
         $user->name=$padre->nombre.' '.$padre->apellidos;
         $user->name=$padre->email;
         $user->name=$padre->nombre;
         $user->password=$padre->pass;
         $user->save();
+        $padre->save();
         return redirect()->action('PadresController@index')->with('status','Tutor Modificado Correctamente');
        
     }

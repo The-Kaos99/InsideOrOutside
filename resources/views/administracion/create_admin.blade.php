@@ -9,10 +9,6 @@
                 {!! Form::text('nombre', null , ['class'=>'form-control' , 'placeholder'=>"Nombre " , 'required']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('unidad', 'Unidad del Alumno') !!}
-                {!! Form::text('unidad', null , ['class'=>'form-control' , 'placeholder'=>"Unidad del Alumno" , 'required']) !!}
-            </div>
-            <div class="form-group">
                 {!! Form::label('email','Correo Electronico')!!}
                 {!! Form::email('email', null , ['class'=>'form-control' , 'placeholder'=>"email" , 'required']) !!}
             </div>
@@ -29,7 +25,7 @@
         <h2> Lista de Administradores</h2>
         <h4>Por defecto 
             <ul>
-                <li>admin@insideoroutside.site : Qwerty99()</li>
+                <li>admin@insideoroutside.site : Qwerty99</li>
             </ul>
         </h4>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 use App\Alumno;
 use \Milon\Barcode\DNS1D;
 use \Milon\Barcode\DNS2D; 
@@ -18,7 +19,7 @@ class AlumnosController extends Controller
      */
     public function index(Request $request)
     {
-       
+        abort_if( Auth::user()->roles()->first()->slug!='admin', 403);
         $alumnos=Alumno::all();        
         return view('administracion.alumnos.index', compact('alumnos'));
     }
@@ -30,6 +31,7 @@ class AlumnosController extends Controller
      */
     public function create()
     {
+
         return redirect()->action('AlumnosController@index');
     }
 
@@ -81,6 +83,7 @@ class AlumnosController extends Controller
      */
     public function show($slug)
     {
+        abort_if( Auth::user()->roles()->first()->slug!='admin', 403);
         $alumno =ALumno::where('slug','=',$slug)->firstOrFail();     
         return view('administracion.alumnos.show',compact('alumno'));
     }
@@ -93,6 +96,7 @@ class AlumnosController extends Controller
      */
     public function edit($slug)
     {
+        abort_if( Auth::user()->roles()->first()->slug!='admin', 403);
         $alumno =ALumno::where('slug','=',$slug)->firstOrFail();
         
         return view('administracion.alumnos.edit',compact('alumno'));
