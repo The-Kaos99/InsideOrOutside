@@ -25,10 +25,6 @@ Route::Resource("admin/padres","PadresController");
 //Auth::routes();
 Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/dashboard-admin', function (){
-    return view('views.vista_para_admin');
-})->name('admin.dashboard');
 Route::get('/test', function () {
 
    /* return Role::create([
@@ -61,7 +57,5 @@ Route::get('/test', function () {
     
 
 });
-Route::get('entradas', 'SalidasController@index')->name('entrada');
-/*Route::get('/entradas', function (){
-    return view('entrada');
-})->name('entrada');*/
+//Route::get('entradas', 'SalidasController@index')->name('entrada');
+Route::post('entradas', [ 'uses' => 'SalidasControllerController@showAlumno' ]);
