@@ -10,31 +10,43 @@
 <div class="row ">
     <div class="col-12">
         {!! Form::open(['action'=>'SalidasController@showAlumno' , 'method'=>'POST' ]) !!}
+        @csrf
             <div class="form-group">
                 {!! Form::label('codig_baras', 'Escanar el codigo de barras') !!}
                 {!! Form::text('codig_baras', null , ['class'=>'form-control' , 'placeholder'=>"Codigo " , 'required']) !!}
             </div>
-        {!! Form::close() !!}
-       <!-- <div class="input-group">
-            <input type="text" class="form-control" name="" id="texto" placeholder="ingresde nomnbre" >
-            <div class="input-group-append">
-                <span class="input-group-text">Buscar</span>
+            
+            <div class="form-group">
+                {!! Form::submit('Validar', ['class'=>'btn btn-success ']) !!}
             </div>
-        </div>-->
+        {!! Form::close() !!}
+       
     </div>
 </div>
+@if ($alumno ?? '')
 <div class="row justify-content-center mt-3">
     <div class="col-12 text-center">
         <div class="card" >
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <h3 class="card-title">{{$alumno->nombre}} {{$alumno->apellidos}}   {{$alumno->unidad}}</h3>
+            <img class=" rounded-circle mx-auto d-block" src="{{ asset("images") }}/{{$alumno->imagen}}" alt="Card image cap" width="300"
+            height="300">
+            <div class=" d-flex justify-content-center mt-3">
+                <h2 class="text-center">
+                    <?php print DNS1D::getBarcodeHTML($alumno->slug, 'C128');?>
+                    {{$alumno->slug}}
+                </h2>
+            </div>
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h4 class="bg-warning">
+                  Fecha Nacimiento : {{$alumno->fech_nac}}
+              </h4>
+              <a href="#" class="btn btn-primary">Revisar</a>
             </div>
           </div>
     </div>
 </div>
+@endif
+
 <script>
     //keyupp
 </script>

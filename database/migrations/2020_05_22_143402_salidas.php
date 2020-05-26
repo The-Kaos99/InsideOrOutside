@@ -13,7 +13,7 @@ class Salidas extends Migration
      */
     public function up()
     {
-        Schema::create('salida', function (Blueprint $table) {
+        Schema::create('salidas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('alumno_id')->references('id')->on('alumnos')->onDelete('cascade');
             $table->timestamps();

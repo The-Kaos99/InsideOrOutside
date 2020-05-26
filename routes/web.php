@@ -23,39 +23,20 @@ Route::Resource("admin/profesores","ProfesoresController");
 Route::Resource("admin/alumnos","AlumnosController");
 Route::Resource("admin/padres","PadresController");
 //Auth::routes();
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false ]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', function () {
 
-   /* return Role::create([
-        'name'=>'Padre',
-        'slug'=>'padre',
-        'description'=>'Padre',
-    ]);
-
-   return Role::create([
-        'name'=>'Admin',
-        'slug'=>'admin',
-        'description'=>'administrador',
-    ]);*/
-    /**/
-    $user=User::where('email','somesan1955599@gmail.com')->first();
+   
+    $user=new User;
     $role_admin= Role::where('name','admin')->first();
-    $user_all= User::All();
-    $email;
-   // $user->roles()->attach([$role_admin->id]);
-    //$user->roles()->detach([$role_admin->id]);
-    //$user->roles()->attach([ Role::where('name','admin')->first()->id]);
-    //$user->roles()->sync([ Role::where('name','admin')->first()->id]);
-   /* if ($user=='') {
-        foreach ($user_all as $prueba) {
-            return $prueba->email;
-        }
-       return $user_all;
-    }*/
-    return auth()->user()->roles();
+    $user->name='admin';
+    $user->email='admin@insideoroutside.site';
+    $user->password=bcrypt('Qwerty99');
+    $user->save();
+    $user->roles()->sync([ Role::where('slug','admin')->first()->id]);
+    return $user;
     
 
 });
-//Route::get('entradas', 'SalidasController@index')->name('entrada');
-Route::post('entradas', [ 'uses' => 'SalidasControllerController@showAlumno' ]);
+Route::match(['GET', 'POST'], 'entradas', ['as' => 'entradas', 'uses' => 'SalidasController@showAlumno']);

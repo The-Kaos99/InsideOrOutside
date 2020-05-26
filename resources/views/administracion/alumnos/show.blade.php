@@ -9,8 +9,6 @@
             height="300">
     </div>
 </div>
-
-
 <div class="row">
     <div class="col-12">
         <h2 class="text-center">{{$alumno->nombre}} {{$alumno->apellidos}}</h2>
