@@ -23,7 +23,7 @@
             <tbody>
                 @foreach ($salidas as $salida)
                     <tr>
-                        <th scope="row">{{$salida->id}}</th>
+                        <th scope="row">{{$salida->fecha}}</th>
                         <td> <img class="rounded-circle mx-auto d-block" src="{{ asset("images") }}/{{$salida->imagen}}" alt="" srcset="" width="100" height="75"></td>
                         <td>{{$salida->nombre}}</td>
                         <td>{{$salida->apellidos}}</td>
