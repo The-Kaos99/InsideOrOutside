@@ -11,8 +11,8 @@
             <div class="col-12 opacidad-0">
                 <h2>Bienvenidos aquí les dare las credenciales de prueba</h2>                
                 <ul>
-                    <li>Administrador : admin:admin</li>
-                    <li>Profesor : profe:profe o profe@profe.com:profe</li>
+                    <li>Administrador : admin@insideoroutside.site : Qwerty99</li>
+                    <li>Profesor : profe@insideoroutside.site : Qwerty99</li>
                     <li>Padres : pendiente de añadir</li>
                 </ul>
             </div>

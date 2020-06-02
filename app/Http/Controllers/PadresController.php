@@ -59,6 +59,9 @@ class PadresController extends Controller
             $password .= substr($str, rand(0, 62), 1);
         }
         $padre->pass=bcrypt($password);
+        if (User::where('email', '=', $request->input('email'))->exists()) {
+            return redirect()->action('PadresController@index')->with('status','Ya existe un usuario con este correo');
+         }
         $padre->save();
         $user = new User();
         $user->name= $padre->nombre.' '.$padre->apellidos;
@@ -68,6 +71,7 @@ class PadresController extends Controller
         $user->roles()->sync([ Role::where('slug','padre')->first()->id]);
         Mail::to($padre->email)->send(new PassPadres($password , $padre));
         return redirect()->action('PadresController@index')->with('status','Tutor Creado Correctamente');
+        
     }
 
     /**

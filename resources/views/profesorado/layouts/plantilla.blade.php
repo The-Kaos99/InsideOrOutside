@@ -4,12 +4,7 @@
   @empty($titulo)
         {{ $titulo='Bienvenidos' }}
     @endempty
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
-    <script>
-        JsBarcode(".barcode").init();
-    </script>
-
+  
 <head>
     <title>{{ $titulo }}</title>
     <meta name="description" content="Proyecto integrado final de cusros 2020 , Desarollo de Aplicaciones Web . Marian ">
@@ -35,49 +30,20 @@
         });
        });
        </script>
-       <script>
-        function pruebaDivAPdf() {
-            var pdf = new jsPDF('p', 'pt', 'letter');
-            source = $('#imprimir')[0];
-    
-            specialElementHandlers = {
-                '#bypassme': function (element, renderer) {
-                    return true
-                }
-            };
-            margins = {
-                top: 80,
-                bottom: 60,
-                left: 40,
-                width: 522
-            };
-    
-            pdf.fromHTML(
-                source, 
-                margins.left, // x coord
-                margins.top, { // y coord
-                    'width': margins.width, 
-                    'elementHandlers': specialElementHandlers
-                },
-    
-                function (dispose) {
-                    pdf.save('Prueba.pdf');
-                }, margins
-            );
-        }
-    </script>
 </head>
 
 <body class="minh-100">
            
     <div class="container-fluid">
-        @include("administracion.layouts.header")
+        @include("profesorado.layouts.header")
         @yield("cabecera")
         
     </div>
     <div class="container bg-gradient-light opacidad-10">
         <hr>
         @yield("contenido")
+        @include('common.succes')
+        @include('common.errors')
         <hr>
     </div>
     <div >

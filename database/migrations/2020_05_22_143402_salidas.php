@@ -16,6 +16,7 @@ class Salidas extends Migration
         Schema::create('salidas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('alumno_id')->references('id')->on('alumnos')->onDelete('cascade');
+            $table->string('fecha');
             $table->timestamps();
         });
     }

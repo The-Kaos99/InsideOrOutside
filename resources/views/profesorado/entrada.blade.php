@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('profesorado.layouts.plantilla')
 
 @section('cabecera')
 <?php
@@ -34,6 +34,7 @@
                 <h2 class="text-center">
                     <?php print DNS1D::getBarcodeHTML($alumno->slug, 'C128');?>
                     {{$alumno->slug}}
+                    
                 </h2>
             </div>
             <div class="card-body">

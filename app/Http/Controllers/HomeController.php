@@ -43,7 +43,7 @@ class HomeController extends Controller
         }elseif ($user_role_slug=='padre') {
            return 'familiares';
         }elseif ($user_role_slug=='profe') {
-           return 'profesorado';
+           return redirect('/profesorado');
         }
         return $user->roles()->first()->slug;
         

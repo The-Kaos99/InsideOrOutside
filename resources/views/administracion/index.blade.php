@@ -3,7 +3,7 @@
 
 @section('cabecera')
 <?php
-    $titulo='Administracion'
+    $titulo='Administración'
 ?>
 @endsection
 @section('contenido')
@@ -25,16 +25,11 @@
                     <li>
                         Creacion , elimnacion y edicion de los padres de los alumnos
                     </li>
-                    <li>
-                        Creacion , elimnacion y edicion de los administradores
-                    </li>
                     
                     <li>
                         Eliminacion completa de Todos los Datos
                     </li>
                </ul>
-               <p>A continacion tendra un panel de control general para la gestion de la plataforma</p>
-               <p>Los Administradores tendran que ser eliminados manualmente</p>
             </div>
         </div>
         <hr>
@@ -47,7 +42,20 @@
             </div>
         </div>
         <hr>
-        @include("administracion.create_admin")
+        <div class="row">
+            <divl class="col-12 mt-2">
+                <h2 class="bg-warning text-center p-2 m-1">No se recomieda utilizar el usuario Administrador mas de lo
+                    imprescindible </h2>
+            </divl>
+        </div>
+        <div class="row pb-5">
+            <div class="col-12 p-5">
+                <h2 class="bg-info text-center p-2">Por razones de seguridad puede haber solo un administrador y no podria ser eliminado bajo nigun medio 
+                    , se puede cambiar la contraseña mediante la funcion de olvidado la contraseña . </h2>
+            </div>
+        </div>
+        
+        {{-- @include("administracion.create_admin") --}}
 @endsection
 @section('footer')
 
