@@ -42,7 +42,35 @@
             role="button">Volver</a>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar border border-dark">
+            <div class="form-group pt-4 d-flex justify-content-center">
+                <label for="search" class="pt-2 mr-2">Busqueda de Alumnos : </label>
+                <input type="text" class="form-control pull-right border border-dark" style="width:20%" id="search" placeholder="Termino">
+            </div>
+        <table class="table table-bordered table-striped mb-0 text-center" id="mytable">
+            <thead>
+              <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Nombre</th>
+                
+                <th scope="col">Unidad</th>
+              </tr>
+            </thead>
+            <tbody>
+                @foreach ($registros as $registro)
+                    <tr>
+                        <th scope="row">{{$registro->fecha}}</th>
+                        <td>{{$alumno->nombre}} {{$alumno->apellidos}}</td>
+                        <td>{{$alumno->unidad}}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
 
 @endsection
 @section('footer')

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Alumno;
 use App\Padre;
+use DB;
 
 class ZonaProfeController extends Controller
 {
@@ -71,7 +72,11 @@ class ZonaProfeController extends Controller
                     return view('profesorado.showAlumnos',compact('alumnos'));
                 }
                 $alumno=Alumno::where('slug','=',request()->get('alumno'))->firstOrFail();
-                return view('profesorado.showAlumno',compact('alumno'));
+                $registros=DB::table('salidas')
+                ->where('alumno_id', '=', $alumno->id)
+                ->orderBy('salidas.fecha','desc')
+                ->get();
+                return view('profesorado.showAlumno',compact('alumno'),compact('registros'));
                 
                 break;
             case 'padres':

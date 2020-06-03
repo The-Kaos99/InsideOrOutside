@@ -16,7 +16,7 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">Foto</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Apellidos</th>
+                
                 <th scope="col">Unidad</th>
               </tr>
             </thead>
@@ -25,9 +25,15 @@
                     <tr>
                         <th scope="row">{{$salida->fecha}}</th>
                         <td> <img class="rounded-circle mx-auto d-block" src="{{ asset("images") }}/{{$salida->imagen}}" alt="" srcset="" width="100" height="75"></td>
-                        <td>{{$salida->nombre}}</td>
-                        <td>{{$salida->apellidos}}</td>
+                        <td>{{$salida->nombre}} {{$salida->apellidos}}</td>
+                        
                         <td>{{$salida->unidad}}</td>
+                        <td>
+                            {!! Form::open(['action'=>['ZonaProfeController@show', 'alumnos'] , 'method'=>'GET']) !!}
+                                {!! Form::hidden('alumno',$salida->slug ) !!}
+                                {!! Form::submit('Ver más...', ['class'=>"btn btn-primary mb-3  border border-dark m-3"]) !!}
+                            {!! Form::close() !!}
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

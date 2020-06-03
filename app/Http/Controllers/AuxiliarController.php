@@ -108,7 +108,8 @@ class AuxiliarController extends Controller
         abort_if( Auth::user()->roles()->first()->slug!='profe', 403);
         $salidas = DB::table('salidas')
         ->join('alumnos','alumnos.id','=','salidas.alumno_id')
-        ->select('alumnos.id as alumno_id','alumnos.nombre','alumnos.apellidos','alumnos.unidad','alumnos.imagen','salidas.fecha','salidas.id')
+        ->select('alumnos.id as alumno_id','alumnos.nombre','alumnos.apellidos','alumnos.slug','alumnos.unidad','alumnos.imagen','salidas.fecha','salidas.id')
+        ->orderBy('salidas.fecha','desc')
         ->get();        
        return  view('profesorado.listaSalidas' , compact('salidas'));
 

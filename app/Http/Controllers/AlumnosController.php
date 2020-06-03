@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Alumno;
+use App\Salida;
+use DB;
 use \Milon\Barcode\DNS1D;
 use \Milon\Barcode\DNS2D; 
 use Illuminate\Http\Request;
@@ -84,8 +86,9 @@ class AlumnosController extends Controller
     public function show($slug)
     {
         abort_if( Auth::user()->roles()->first()->slug!='admin', 403);
-        $alumno =ALumno::where('slug','=',$slug)->firstOrFail();     
-        return view('administracion.alumnos.show',compact('alumno'));
+        $alumno =ALumno::where('slug','=',$slug)->firstOrFail();  
+        $registros=DB::table('salidas')->where('alumno_id', '=', $alumno->id)->get();
+        return view('administracion.alumnos.show',compact('alumno'),compact('registros'));
     }
 
     /**
