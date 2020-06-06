@@ -19,7 +19,7 @@ class InicioController extends Controller
 
     public function primeros_pasos()
     {
-        $alumnos=["Ana","Sara","Antonio","Manuel"];
-        return view("primeros_pasos" ,compact("alumnos"));
+        
+        return view("primeros_pasos");
     }
 }

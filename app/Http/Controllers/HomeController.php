@@ -41,7 +41,7 @@ class HomeController extends Controller
         if ($user_role_slug=='admin') {
             return redirect('/admin') ;
         }elseif ($user_role_slug=='padre') {
-           return 'familiares';
+            return redirect('/familia');
         }elseif ($user_role_slug=='profe') {
            return redirect('/profesorado');
         }
