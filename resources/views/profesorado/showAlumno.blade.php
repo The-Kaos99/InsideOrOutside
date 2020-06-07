@@ -32,7 +32,7 @@
 </div>
 <div class="row text-center">
     <div class="col-md-6">
-        {!! Form::open(['url'=>['profesorado/alumnos/imprimir'] , 'method'=>'post']) !!}
+        {!! Form::open(['url'=>['profesorado/alumnos/imprimir'] , 'method'=>'post', 'target'=>'_blank'] ) !!}
             {!! Form::hidden('slug', $alumno->slug) !!}
             {!! Form::submit('Imprimir Carne', ['class'=>"btn btn-info mb-3"]) !!}
          {!! Form::close() !!}

@@ -48,43 +48,6 @@
             </div>
 
         {!! Form::close() !!}
-
-       <!-- <form action="/admin/alumnos/{{$alumno->slug}}" method="post" enctype="multipart/form-data">
-            {{ method_field('PUT') }}
-            {{ csrf_field() }}
-            <div class="form-group">
-                <label for="nombre">Nombre del Alumno</label>
-                <input type="text" class="form-control" name="nombre" id="nombre"
-            aria-describedby="nombre" placeholder="Nombre del Alumno" required value="{{$alumno->nombre}}">
-            </div>
-            <div class="form-group">
-                <label for="apellidos">Apellidos del Alumno</label>
-                <input type="text" class="form-control" name="apellidos" id="apellidos"
-                    aria-describedby="apellidos" placeholder="Apellidos del Alumno" required value="{{$alumno->apellidos}}">
-            </div>
-            <div class="form-group">
-                <label for="fech_nac">Fecha de Naciminento</label>
-                <input type="date" class="form-control" name="fech_nac" id="fech_nac" aria-describedby="fech_nac"
-                    required value="{{$alumno->fech_nac}}">
-            </div>
-            <div class="form-group">
-                <label for="unidad">Unidad</label>
-                <input type="text" class="form-control" name="unidad" id="unidad" aria-describedby="unidad"
-                    placeholder="Unidad del Alumno" required value="{{$alumno->unidad}}">
-            </div>
-            <div class="form-group">
-                <label for="curso">Curso</label>
-                <input type="text" class="form-control" name="curso" id="curso" aria-describedby="curso"
-                    placeholder="curso del Alumno" required value="{{$alumno->curso}}">
-            </div>
-           <div class="form-group">
-                <label for="imagen">Imagen del Alumno</label>
-                <input type="file" class="form-control pb-5 pt-3" name="imagen" id="imagen"
-                    aria-describedby="imagen">
-            </div>
-            <button type="submit" class="btn btn-success border border-dark" >Guardar Alumno</button>
-            <a name="volver" id="volver" class="btn btn-primary border border-dark" href="{{ url()->previous() }}" role="button">Volver</a>  
-        </form>-->
         
         
         <div class="col-1"></div>
