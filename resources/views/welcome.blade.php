@@ -6,7 +6,7 @@
 @endsection
 @section('contenido')
         <div class="row ">
-            <div class="col-12 opacidad-0">
+            <div class="col-12">
                 <h2>Bienvenidos aquí les dare las credenciales de prueba</h2>                
                 <ul>
                     <li>Administrador : admin@insideoroutside.site : Qwerty99</li>
@@ -18,7 +18,3 @@
         <hr>
     </div>
 @endsection
-
-</body>
-
-</html>
