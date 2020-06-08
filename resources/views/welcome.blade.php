@@ -1,6 +1,4 @@
 @extends('layouts.plantilla')
-
-
 @section('cabecera')
 <?php
     $titulo='Bienvenidos';
@@ -20,6 +18,7 @@
         <hr>
     </div>
 @endsection
+
 </body>
 
 </html>

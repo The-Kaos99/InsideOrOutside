@@ -1,24 +1,22 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
    
-  @empty($titulo)
-        {{ config('app.name', 'Laravel') }}
-    @endempty
-  
-<head>
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <meta name="description" content="Proyecto integrado final de cusros 2020 , Desarollo de Aplicaciones Web . Marian ">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset("css/estilos.css") }}">
-</head>
+    <head> 
+        @empty($titulo)
+              {{ $titulo='Bienvenidos' }}
+          @endempty
+          <title>{{ $titulo }}</title>
+          <meta name="description" content="Proyecto integrado final de cusros 2020 , Desarollo de Aplicaciones Web . Marian ">
+          <!-- Required meta tags -->
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          <!-- Bootstrap CSS -->
+          <link rel="stylesheet" href="{{ asset("css/estilos.css") }}">
+      </head>
 
 <body class="minh-100">
            
-    <div class="container-fluid">
+    <div class="container-fluid" >
         @include("layouts.header")
         @yield("cabecera")
         
@@ -28,11 +26,11 @@
         @yield("contenido")
         <hr>
     </div>
-    <div >
+    
        
         @yield("footer")
         
-    </div>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
