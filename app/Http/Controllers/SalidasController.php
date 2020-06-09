@@ -21,10 +21,8 @@ class SalidasController extends Controller
     public function showAlumno(Request $request)
     { 
         try {
-
             if ($request->isMethod('post')) {
                 $alumno = Alumno::where('slug', $request->input('codig_baras'))->firstOrFail(); 
-
                 $salida= new Salida;
                 $salida->alumno_id= $alumno->id;
                 $salida->fecha= date('Y-m-d H:i:s');

@@ -33,7 +33,6 @@ Route::post('profesorado/storeAlumno','AuxiliarController@storeAlumno');
 Route::match(['GET', 'POST'], 'profesorado/createPadre',  ['as' => 'CreatePadreProfe', 'uses' => 'AuxiliarController@createPadre']);
 Route::post('profesorado/storePadre','AuxiliarController@storePadre');
 Route::get('salidas','AuxiliarController@showRegistro');
-//Route::name('print')->get('/imprimir', 'AuxiliarController@imprimir');
 Route::match(['GET', 'POST'], 'admin/alumnos/imprimir', ['as' => 'carne', 'uses' => 'AuxiliarController@imprimir']);
 Route::match(['GET', 'POST'], 'profesorado/alumnos/imprimir', ['as' => 'carne', 'uses' => 'AuxiliarController@imprimir']);
 Route::get('/familia', 'ZonaPadreController@index')->name('familia');
