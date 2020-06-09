@@ -40,7 +40,7 @@
         {!! Form::open(['url'=>['admin/alumnos/imprimir'] , 'method'=>'post', 'target'=>'_blank']) !!}
             {!! Form::hidden('slug', $alumno->slug) !!}
             {!! Form::submit('Imprimir Carne', ['class'=>"btn btn-info mb-3"]) !!}
-         {!! Form::close() !!}
+        {!! Form::close() !!}
     </div>
     <div class="col-md-3 pb-3">
         <a name="editar" id="editar" class="btn btn-warning border border-dark"
