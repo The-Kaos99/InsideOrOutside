@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Alumno;
 use App\Padre;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class ZonaProfeController extends Controller
 {
@@ -17,6 +18,7 @@ class ZonaProfeController extends Controller
      */
     public function index()
     {
+        abort_if( Auth::user()->roles()->first()->slug!='profe', 403);
         return view('profesorado.index');
     }
 
@@ -39,6 +41,7 @@ class ZonaProfeController extends Controller
      */
     public function store(Request $request , $tipo)
     {
+        abort_if( Auth::user()->roles()->first()->slug!='profe', 403);
         switch ($tipo) {
             case 'alumnos':
                 return view('profesorado.createAlumno');
@@ -65,6 +68,7 @@ class ZonaProfeController extends Controller
      */
     public function show( Request $request ,$tipo )
     {
+        abort_if( Auth::user()->roles()->first()->slug!='profe', 403);
         switch ($tipo) {
             case 'alumnos':
                 if (request()->get('alumno')==='all') {
@@ -123,6 +127,7 @@ class ZonaProfeController extends Controller
      */
     public function destroy(Request $request ,$tipo)
     {
+        abort_if( Auth::user()->roles()->first()->slug!='profe', 403);
         switch ($tipo) {
             case 'alumnos':                
                 $alumno=Alumno::where('slug','=',request()->get('alumno'))->firstOrFail();
