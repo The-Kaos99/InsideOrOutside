@@ -44,12 +44,5 @@
     </div>
 </div> 
 
-<div class="row">
-    <div class="col-6 text-center"><h3>Eliminar todos los alumnos</h3></div>
-        <div class="col-6">
-            {!! Form::open(['action'=>['AlumnosController@destroy', $slug='allDelete',] , 'method'=>'DELETE']) !!}
-                {!! Form::submit('Eliminar', ['class'=>"btn btn-danger mb-3"]) !!}
-            {!! Form::close() !!}
-        </div>
-    </div>
+
 <hr>
