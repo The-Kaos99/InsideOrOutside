@@ -88,7 +88,7 @@ class AuxiliarController extends Controller
         }
         $padre->pass=bcrypt($password);
         if (User::where('email', '=', $request->input('email'))->exists()) {
-            return  view('profesorado.createPadre')->with('status','Ya existe un usuario con este correo');
+            return  view('profesorado.createPadre')->with('errors','Ya existe un usuario con este correo');
          }
         $padre->save();
         $user = new User();

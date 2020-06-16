@@ -6,7 +6,6 @@
 <div class="row">
     <div class="col-1"></div>
     <div class="col-10">
-        @include('common.errors')
         {!! Form::open(['action'=>'PadresController@store' , 'method'=>'POST' , 'file'=>true ,'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {!! Form::label('nombre', 'Nombre :') !!}

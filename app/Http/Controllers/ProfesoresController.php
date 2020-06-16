@@ -62,7 +62,7 @@ class ProfesoresController extends Controller
         }
         $profesor->pass = bcrypt($password);
         if (User::where('email', '=', $request->input('email'))->exists()) {
-            return redirect()->action('PadresController@index')->with('status','Ya existe un usuario con este correo');
+            return redirect()->action('ProfesoresController@index')->with('error','Ya existe un usuario con este correo');
          }
         $profesor->save();
         $user = new User();

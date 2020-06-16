@@ -42,8 +42,7 @@
     <div class="container bg-gradient-light opacidad-10">
         <hr>
         @yield("contenido")
-        @include('common.succes')
-        @include('common.errors')
+        
         <hr>
     </div>
     <div >

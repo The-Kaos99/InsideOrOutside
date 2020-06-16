@@ -60,7 +60,7 @@ class PadresController extends Controller
         }
         $padre->pass=bcrypt($password);
         if (User::where('email', '=', $request->input('email'))->exists()) {
-            return redirect()->action('PadresController@index')->with('status','Ya existe un usuario con este correo');
+            return redirect()->action('PadresController@index')->with('error','Ya existe un usuario con este correo');
          }
         $padre->save();
         $user = new User();
